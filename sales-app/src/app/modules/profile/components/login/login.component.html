@@ -1,0 +1,28 @@
+<!-- login page  -->
+<div class="login-page"> 
+  <div class="form"> 
+  <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" > 
+  <h3 class="text-center text-success">Sales Master</h3><br> 
+  <img src="assets/favicon32x32.png" style="height: 150px;"><br> 
+  <!-- <label class="text-left">Email</label> --> 
+  <input type="email" placeholder="EMAIL" formControlName="lgnEmail"/> 
+  <div *ngIf="loginForm.controls['lgnEmail'].invalid && (loginForm.controls['lgnEmail'].dirty || loginForm.controls['lgnEmail'].touched)"> 
+  <span class="text-danger" *ngIf="loginForm.controls['lgnEmail'].errors.required" > E-mail Required</span> 
+  <span class="text-danger" *ngIf="loginForm.controls['lgnEmail'].errors.email" >Invalid Email format</span> 
+  </div> 
+  
+  <!-- <label class="text-left">PAssword</label> --> 
+  <input type="password" placeholder="password" formControlName="lgnPassword"/> 
+  <div *ngIf="loginForm.controls['lgnPassword'].invalid && (loginForm.controls['lgnPassword'].dirty || loginForm.controls['lgnPassword'].touched)"> 
+  <span class="text-danger" *ngIf="loginForm.controls['lgnPassword'].errors.required" >Password Required</span> 
+  </div> 
+  
+  <button type="submit" [disabled]="!loginForm.valid">login</button> 
+  <!-- <span *ngIf="flag" class="text-danger">Please Enter coreect Credentials</span> --> 
+  <!-- <p class="message">Not registered? <a routerLink="" >Create an account</a></p> --> 
+  </form> 
+  </div> 
+  </div>
+
+<!-- 
+<button (click)="login()">login</button> -->

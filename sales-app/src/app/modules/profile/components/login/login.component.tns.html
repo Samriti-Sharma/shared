@@ -1,0 +1,14 @@
+<ActionBar class="action-bar"> 
+    <Label class="action-bar-title" text="Sales Master"></Label> 
+    </ActionBar> 
+    
+    <Image src="res://favicon" stretch="none" horizontalAlignment="center"></Image> 
+    <StackLayout class="form" [formGroup]="loginForm" > 
+    
+    <TextField formControlName="lgnEmail" class="input" hint="Email Address" keyboardType="email" autocorrect="false"></TextField> 
+    
+    <TextField formControlName="lgnPassword" class="input" hint="Password" secure="true" ></TextField> 
+    
+    <Button text="Log In" class="btn btn-primary m-t-20" (tap)="login(loginForm.value)"  ></Button> 
+    </StackLayout>
+  

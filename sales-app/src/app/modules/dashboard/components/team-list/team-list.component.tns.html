@@ -1,0 +1,36 @@
+<app-header></app-header>
+<GridLayout rows="*, 60" tkExampleTitle tkToggleNavButton>
+    <RadListView [items]="teamlist" (itemTap)="Select($event)" class="list-group"
+        (itemSwipeProgressEnded)="onSwipeCellFinished($event)" (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
+        (itemSwipeProgressChanged)="onCellSwiping($event)" swipeActions="true">
+
+
+        <StackLayout row="0">
+            <Label text="hjhgj"></Label>
+            <ng-template tkListItemTemplate let-item="item">
+
+                <StackLayout orientation="vertical" class="list-group-item" style="background-color:whitesmoke">
+                    <Label [text]="item.team_name" class="list-group-item-text"></Label>
+                    <Label text="{{item.amount | currency}}" style.textAlignment="right"></Label>
+                    <StackLayout height="1" backgroundColor="Black"></StackLayout>
+                </StackLayout>
+
+            </ng-template>
+
+            <GridLayout *tkListItemSwipeTemplate columns="*, auto" class="gridLayoutLayout">
+                <StackLayout id="delete-view" col="1" class="deleteViewStackLayout" (tap)="onRightSwipeClick($event)"
+                    style="background-color: red">
+                    <Label text="delete" class="swipeTemplateLabel" verticalAlignment="center"
+                        horizontalAlignment="center"></Label>
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+
+    </RadListView>
+    <StackLayout row="1">
+            
+
+        <app-footer></app-footer>
+    </StackLayout>
+</GridLayout>
+ <router-outlet></router-outlet>

@@ -1,0 +1,10 @@
+.affix { 
+    top: 0; 
+    width: 100%; 
+    z-index:4; 
+    position:fixed; 
+    } 
+    
+    .main { 
+    margin-top: 70px; 
+    }
