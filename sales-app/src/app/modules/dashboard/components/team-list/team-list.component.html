@@ -1,16 +1,25 @@
-
 <app-header></app-header>
 
 <div class="main">
-  <div class="card" *ngFor="let team of teamlist ; let i = index" (click)="change(team,i)"> 
+  <div class="card" *ngFor="let team of teamlist; let i=index" (click)="change(team,i)">
+    <div (click)="change(team,i)">
     <div class="container" data-toggle="modal" data-target="#myModal">
-      <h4><b> {{team.team_name | titlecase}}</b><strong>{{team.amount | currency}}</strong></h4>  
+      <h4>
+        <span><b> {{team.team_name | titlecase}}</b></span>
+        <span><strong>{{team.amount | currency}}
+          </strong></span></h4>
+        </div>
+      <div>
+        <button (click)="myFunction(team.team_id)" id="butn" class="btn btn-default btn-sm"
+          class="glyphicon glyphicon-trash" style="color:blue">
+        </button>
+      </div>
     </div>
-    
 
-    </div>
-  </div> 
-  <router-outlet></router-outlet>
- 
 
- <app-footer></app-footer>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
+
+<app-footer></app-footer>

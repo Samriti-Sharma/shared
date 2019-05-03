@@ -1,4 +1,4 @@
-<ActionBar backgroundColor="rgb(81,197,247, 0.8)"> 
+<!-- <ActionBar backgroundColor="rgb(81,197,247, 0.8)" *ngIf="flag"> 
     <GridLayout columns="auto,*,auto" verticalAlignment="top" padding="25" 
     fontSize="13" color="white"> 
     <Label row="1" col="0" text="Log out" (tap)="logout()"></Label> 
@@ -6,4 +6,16 @@
     <Label row="1" col="2" text="Add" (tap)="add()"></Label> 
     
     </GridLayout> 
-</ActionBar>                                                
+  
+</ActionBar>  
+
+ -->
+ <ActionBar backgroundColor="rgb(81,197,247, 0.8)" *ngIf="teamService.flag"> 
+    <GridLayout columns="auto,*,auto" verticalAlignment="top" padding="20" 
+    color="white"> 
+    <Label row="1" col="0" text="Log out" (tap)="logout()" fontSize="20" style.textAlignment="left"></Label> 
+    <Label row="1" col="1" [text]="teamService.flag" style.textAlignment="center" fontSize="18"></Label> 
+    <Label row="1" col="2" text="Add" (tap)="add()" fontSize="20" style.textAlignment="right"></Label> 
+    
+    </GridLayout> 
+    </ActionBar>

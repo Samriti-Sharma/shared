@@ -1,12 +1,12 @@
-<ActionBar title="Sales Master App" [showBackButton]="false">
+<ActionBar class="C" title="Sales Master App" [showBackButton]="false">
     <NavigationButton text="Go Back" android.systemIcon="ic_menu_back" (tap)="onNavBtnTap()"> </NavigationButton>
 
 </ActionBar>
 
 <StackLayout class="form" [formGroup]="add_TeamForm">
     <Label class="l" text="Team name"></Label>
-    <TextField id="txtfd" class="input input-border " formControlName="team"></TextField>
+    <TextField id="txtfd" class="input input-border" formControlName="team"></TextField>
     <Label class="l" text="Revenue"></Label>
-    <TextField id="txtfd" class="input input-border " formControlName="revenue"></TextField>
-    <Button class="btn" text="Add" (tap)="add(add_TeamForm.value)" fontSize="20"></Button>
+    <TextField id="txtfd" class="input input-border" formControlName="revenue"></TextField>
+    <Button class="btn" text="Add" (tap)="check_update(add_TeamForm.value)" fontSize="20"></Button>
 </StackLayout>

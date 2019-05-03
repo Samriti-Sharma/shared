@@ -1,16 +1,24 @@
 //import { OnInit } from '@angular/core'; 
 import { TeamListService } from "../../services/team-list.service";
 import { Router } from '@angular/router';
+import { ChangeDetectorRef, SimpleChange } from "@angular/core";
 
 export class TeamListCommon {
 
     public teamlist: any = [];
     public total: any = 0;
-
-    constructor(public teamService: TeamListService, public Route: Router, public amount: TeamListService) { }
+    public flag:boolean;
+    constructor(public teamService: TeamListService, public Route: Router, public amount: TeamListService, public ref:ChangeDetectorRef) { }
 
     public ngOnInit() {
+        this.flag=this.teamService.flag;
         this.getTeams();
+        console.log("team-list");
+    }
+
+    public ngOnChanges(changes: SimpleChange){
+        console.log(changes);
+
     }
 
     public getTeams() {
@@ -31,16 +39,19 @@ export class TeamListCommon {
     }
 
    public change(team,i){
-          console.log("gyhjn");  
-          console.log(i);
+   
+         this.teamService.flag=false;
+         //this.ref.detectChanges();
             this.Route.navigate(['/dashboard/team-list/edit',team.team_id],{
             queryParams:{id:i,team_name:team.team_name,amount:team.amount}}
             );
+            this.ref.detectChanges()
+           
             
           }
 
-    public update(){
-            console.log("change");
-            this.Route.navigate(['/private/edit-team']);
-          }
+    // public update(){
+    //         console.log("change");
+    //         this.Route.navigate(['/private/edit-team']);
+    //       }
 }

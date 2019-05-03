@@ -4,7 +4,7 @@ import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // Uncomment and add to NgModule imports if you need to use two-way binding
- //import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+ import { NativeScriptFormsModule } from 'nativescript-angular/forms';
 // Uncomment and add to NgModule imports  if you need to use the HTTP wrapper
  import { NativeScriptHttpClientModule } from 'nativescript-angular/http-client';
 
@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
     NativeScriptModule,
     AppRoutingModule,
     NativeScriptHttpClientModule,
-   // NativeScriptFormsModule
+   NativeScriptFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

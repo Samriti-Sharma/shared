@@ -7,6 +7,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamUpdateComponent } from '../update/components/team-update/team-update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TeamListService } from './services/team-list.service';
 
 
 
@@ -17,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     DashboardRoutingModule,FormsModule, ReactiveFormsModule
     
-  ]
+  ],
+  // providers:[TeamListService]
 })
 export class DashboardModule { }

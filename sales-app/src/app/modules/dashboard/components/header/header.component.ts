@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { TeamListService } from '../../services/team-list.service'; 
 
 @Component({
   selector: 'app-header',
@@ -8,15 +9,20 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private Route:Router) { }
-
+  constructor(private Route:Router , public teamService : TeamListService,
+    private ref:ChangeDetectorRef) {
+   }
+  
   ngOnInit() {
+   
   }
 
 
   add(){
-    console.log("gyhj");
-    this.Route.navigate(['/dashboard/team-list/add']); 
+     this.teamService.flag=false;
+    this.Route.navigate(['/dashboard/team-list/add']);
+    this.ref.detectChanges();
+
   }
 
   logout(){ 

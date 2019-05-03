@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { TeamListCommon } from "./team-list..common";
 // import { TeamListService } from "../../services/team-list.service"; 
 // import { Router } from '@angular/router'; 
@@ -7,6 +7,8 @@ import { View } from "tns-core-modules/ui/core/view";
 import * as dialogs from "tns-core-modules/ui/dialogs";
 import { TeamListService } from '../../services/team-list.service';
 import { Router } from '@angular/router';
+ 
+
 
 @Component({
     selector: 'app-team-list',
@@ -17,9 +19,9 @@ export class TeamListComponent extends TeamListCommon implements OnInit {
 
     // teamlist: any=[]; 
     // total:any=0; 
-
-    constructor(public teamService: TeamListService, public route: Router, public amount: TeamListService) {
-        super(teamService, route, amount);
+    constructor(public teamService: TeamListService, public route: Router, public amount: TeamListService,public ref:ChangeDetectorRef) {
+        super(teamService, route, amount,ref);
+         this.teamService.flag=true;
     }
 
     public onCellSwiping(args: ListViewEventData) {
@@ -62,7 +64,9 @@ export class TeamListComponent extends TeamListCommon implements OnInit {
                         this.getTeams();
                         console.log("item deleted");
                     }
-                    else { console.log("item not deleted"); }
+                    else { 
+                        alert("session expired");
+                        console.log("item not deleted"); }
                 });
             }
             else if (!result) {

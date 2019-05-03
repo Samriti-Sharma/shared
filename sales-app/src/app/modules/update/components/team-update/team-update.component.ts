@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { UpdateService } from '../../services/update.service';
 import { ActivatedRoute } from '@angular/router';
+import { TeamListService } from '../../../dashboard/services/team-list.service';
+//import { RouterExtensions } from "nativescript-angular/router";
 
 @Component({
   selector: 'app-team-update',
@@ -20,7 +22,9 @@ export class TeamUpdateComponent implements OnInit {
 
   constructor(private router: Router,
     private formBuilder: FormBuilder, private addservice: UpdateService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+
+  ) { }
 
   ngOnInit() {
     this.id = parseInt(this.route.snapshot.paramMap.get('id'));
@@ -28,13 +32,19 @@ export class TeamUpdateComponent implements OnInit {
     this.name = this.route.snapshot.queryParamMap.get('team_name');
     this.array_id = parseInt(this.route.snapshot.queryParamMap.get('id'));
 
-    console.log(this.array_id);
+  
     this.add_TeamForm = this.formBuilder.group({
       team: ['', Validators.required],
       revenue: ['', Validators.required]
 
     });
     this.select();
+    console.log('team-update');
+  }
+
+  onNavBtnTap = function () {
+
+    this.router.navigate(['/login']);
   }
 
   select() {
@@ -52,6 +62,8 @@ export class TeamUpdateComponent implements OnInit {
     }
   }
 
+
+
   check_update(data) {
     if (this.id > 0) {
       console.log("sssssssssss");
@@ -61,10 +73,11 @@ export class TeamUpdateComponent implements OnInit {
       console.log(data);
       this.addservice.updateTeam(data).subscribe(response => {
         if (response && response.status == 200) {
-          alert("updated");
+          alert("Team Updated");
           console.log(response);
-          this.closeAddExpenseModal.nativeElement.click();
           this.router.navigate(['/dashboard/team-list']);
+          this.closeAddExpenseModal.nativeElement.click();
+          //location.reload();
         }
         else {
           alert("error");
@@ -83,6 +96,7 @@ export class TeamUpdateComponent implements OnInit {
         this.addservice.addTeam(data).subscribe(response => {
           console.log(response);
           if (response && response.status == 200) {
+            alert("Team Added");
             console.log("add-success");
             this.closeAddExpenseModal.nativeElement.click();
             this.router.navigate(['/dashboard/team-list']);
@@ -90,6 +104,7 @@ export class TeamUpdateComponent implements OnInit {
         });
       }
       else {
+        alert("Session Timed out");
         console.log("something went wrong in login service");
       }
     }
